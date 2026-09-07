@@ -1,170 +1,78 @@
-<!-- ============================================================= -->
-<!--                       ARYAN SAXENA · README                    -->
-<!-- ============================================================= -->
+# Aryan Saxena
 
-<div align="center">
+**Backend and AI engineer.** B.Tech Computer Science, IIIT Nagpur, June 2026. Based in Pune, India — available immediately.
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0F172A,50:7C3AED,100:F472B6&height=230&section=header&text=Aryan%20Saxena&fontSize=70&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Machine%20Learning%20Engineer%20%E2%80%A2%20Full-Stack%20Builder%20%E2%80%A2%20Systems%20Thinker&descAlignY=58&descSize=15" width="100%" />
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![Java](https://img.shields.io/badge/Java%2017-E76F00?logo=openjdk&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-5FA04E?logo=nodedotjs&logoColor=white)
+![LangGraph](https://img.shields.io/badge/LangGraph-1C3C3C?logo=langchain&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
+![OpenSearch](https://img.shields.io/badge/OpenSearch-005EB8?logo=opensearch&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-FF4438?logo=redis&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black)
 
-<a href="https://github.com/code2946">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=2800&pause=900&color=F472B6&center=true&vCenter=true&width=720&lines=Turning+ideas+into+shippable+products.;Machine+Learning+%E2%80%A2+Systems+%E2%80%A2+Design.;Final-year+CSE+%40+IIIT+Nagpur.;Always+learning.+Always+building." alt="typing" />
-</a>
+Three internships so far, all of them shipping. At **Lumora** I built an LLM chat product with a
+retrieval-backed memory layer, and owned the wallet and credits path behind it. At **Airtel
+(Xtelify)** I built the document-extraction pipeline behind their AI Expense Chatbot — receipts and
+meeting transcripts through an OCR-first LLM stage into Oracle EBS, replacing manual form-filling for
+15,000+ employees at 95% data accuracy. Accuracy and throughput were instrumented and reported
+upward, so it was a number rather than an opinion.
 
-<br>
+Most of what I do is the engineering around a model rather than the model itself: retrieval, the API
+in front of it, the database behind it, and the deploy. These are the repos worth opening.
 
-<a href="https://www.linkedin.com/in/aryan-saxena-5401ab373/">
-  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
-</a>
-<a href="mailto:iamcodezero1@gmail.com">
-  <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" />
-</a>
-<img src="https://komarev.com/ghpvc/?username=code2946&style=for-the-badge&color=F472B6&label=PROFILE+VIEWS" />
+---
 
-</div>
+### [agentic-rag](https://github.com/saxena-aryan-dev/agentic-rag)
 
-<br>
+`Python` · `LangGraph` · `OpenSearch` · `FastAPI` · `PostgreSQL` · `Redis` · `Docker`
 
-## &nbsp;🧬&nbsp; About Me
+Answers questions about arXiv papers, with citations. Hybrid retrieval fuses BM25 and dense vectors
+by Reciprocal Rank Fusion; a LangGraph agent grades its own retrieval and rewrites the query up to
+twice before it generates. One `docker compose up`, healthcheck-gated, seeded straight from the arXiv
+API.
 
-```python
-class AryanSaxena:
-    def __init__(self):
-        self.role       = "Aspiring ML Engineer + Full-Stack Builder"
-        self.education  = "B.Tech CSE, IIIT Nagpur  (2022 — 2026)"
-        self.focus      = ["Machine Learning", "AI Systems", "Product Engineering"]
-        self.exploring  = ["Deep Learning Research", "Quant × AI", "System Design"]
-        self.philosophy = "Build things that are functional AND impactful."
+### [payment-authorization-switch](https://github.com/saxena-aryan-dev/payment-authorization-switch)
 
-    def current_status(self):
-        return "Shipping real projects. Reading papers. Staying curious."
-```
+`Java 17` · `Spring Boot 3` · `PostgreSQL` · `Docker` · `GitHub Actions`
 
-I enjoy turning ideas into real-world applications — from AI-powered systems to full-stack platforms. My current obsession sits at the intersection of **AI, software engineering, and product thinking** — the place where algorithms meet users.
+A card authorization switch — the component at the centre of a payment network. The ISO 8583 codec is
+hand-written: message type indicator, 64-bit primary bitmap, `FIXED` / `LLVAR` / `LLLVAR` data
+elements. Luhn, expiry and limit checks map to standard field-39 response codes, PANs are masked
+before they reach storage, and every transaction is persisted. An acquirer's `0100` comes back as a
+`0110` in one synchronous call. Tested with JUnit 5, Mockito, AssertJ and MockMvc against H2; CI
+holds the build to a 60% coverage gate.
 
-<br>
+### [screenonfire](https://github.com/saxena-aryan-dev/screenonfire)
 
-## &nbsp;🔭&nbsp; Currently Building
+`Next.js 14` · `TypeScript` · `Supabase` · `TMDB`
 
-<table>
-<tr>
-<td width="50%" valign="top">
+Movie discovery, running live. Pick a few films you like and it builds a feature profile out of their
+genres, cast, directors, ratings and release years, then scores the catalog against it by weighted
+similarity — with the weights exposed as sliders, so you can decide that director matters more than
+genre and watch the list move.
 
-### 🎬 &nbsp;Movie Recommender
-AI-powered recommendation engine using embedding similarity and collaborative filtering.
-<br><sub>`React` · `Node.js` · `MongoDB` · `Python ML`</sub>
+### [lexer](https://github.com/saxena-aryan-dev/lexer)
 
-</td>
-<td width="50%" valign="top">
+`C++`
 
-### 💬 &nbsp;Forum Platform
-Reddit-style discussion system with threads, nested comments, reactions, and auth.
-<br><sub>`React` · `Express` · `MongoDB` · `JWT`</sub>
+Tokenizer for C/C++ source. Classifies keywords, identifiers, operators, literals, preprocessor
+directives and comments, and reports the failures a real compiler front-end has to survive:
+unterminated strings, unterminated block comments, malformed numeric literals.
 
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
+### [otp-auth-android](https://github.com/saxena-aryan-dev/otp-auth-android)
 
-### ✨ &nbsp;AstroWisdom
-Vedic astrology mobile app — North Indian charts, Navamsa, ephemeris-backed calculations.
-<br><sub>`React Native` · `Expo` · `PyJHora` · `Swiss Ephemeris`</sub>
+`Kotlin` · `Jetpack Compose`
 
-</td>
-<td width="50%" valign="top">
+Passwordless email and OTP authentication. Generation and validation with expiry and attempt limits,
+a live session timer, sealed classes for UI state.
 
-### 📚 &nbsp;ML Engineer Roadmap
-Structured 6-month path: DSA · real-world projects · papers · deployment.
-<br><sub>`PyTorch` · `LeetCode` · `MLOps` · `Research`</sub>
+---
 
-</td>
-</tr>
-</table>
+**Certification** — [IBM RAG and Agentic AI Professional Certificate](https://www.coursera.org/account/accomplishments/professional-cert/FX8SRL9459H9), August 2026. Ten courses: RAG, vector databases, multimodal generative AI, LangChain and LangGraph agents, MCP.
 
-<br>
-
-## &nbsp;🛠&nbsp; Tech Arsenal
-
-<div align="center">
-
-**Languages**  
-<img src="https://skillicons.dev/icons?i=python,cpp,java,js,ts" />
-
-**Machine Learning · AI**  
-<img src="https://skillicons.dev/icons?i=pytorch,tensorflow,sklearn" />
-<img src="https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white" />
-<img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" />
-<img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" />
-<img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=python&logoColor=white" />
-
-**Frontend**  
-<img src="https://skillicons.dev/icons?i=react,angular,nextjs,tailwind,figma" />
-
-**Backend**  
-<img src="https://skillicons.dev/icons?i=nodejs,express,fastapi" />
-
-**Databases**  
-<img src="https://skillicons.dev/icons?i=mongodb,mysql,sqlite,redis,firebase" />
-
-**Cloud · DevOps · Tools**  
-<img src="https://skillicons.dev/icons?i=aws,vercel,netlify,git,github,linux,vscode" />
-
-</div>
-
-<br>
-
-## &nbsp;📊&nbsp; Code DNA
-
-<div align="center">
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=code2946&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&langs_count=8&count_private=true&title_color=F472B6" height="180" />
-&nbsp;
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=code2946&theme=tokyo-night&hide_border=true&bg_color=0D1117&color=F472B6&line=7C3AED&point=F472B6&area=true&area_color=7C3AED" height="180" />
-
-<br><br>
-
-<img src="https://raw.githubusercontent.com/code2946/code2946/output/github-contribution-grid-snake-dark.svg" alt="contribution snake" />
-
-</div>
-
-<br>
-
-## &nbsp;🧭&nbsp; What I'm Exploring Next
-
-- **Advanced Deep Learning** — transformers, diffusion models, and efficient fine-tuning
-- **MLOps & Deployment** — taking models from notebook to production cleanly
-- **Quant × AI** — applying ML to Indian equity markets and systematic strategies
-- **System Design** — building things that scale, not just things that work
-
-<br>
-
-## &nbsp;🤝&nbsp; Let's Connect
-
-<div align="center">
-
-Open to ML research collabs, full-stack builds, internship conversations, or a good chat over chai.
-
-<br>
-
-<a href="https://www.linkedin.com/in/aryan-saxena-5401ab373/">
-  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
-</a>
-<a href="mailto:iamcodezero1@gmail.com">
-  <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" />
-</a>
-<a href="https://github.com/code2946">
-  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
-</a>
-
-</div>
-
-<br>
-
-<div align="center">
-  
-<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" />
-
-<br><br>
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:F472B6,50:7C3AED,100:0F172A&height=120&section=footer" width="100%" />
-
-</div>
+**Reach me** — [saxena.aryan.dev@gmail.com](mailto:saxena.aryan.dev@gmail.com) · [LinkedIn](https://www.linkedin.com/in/saxena-aryan-dev) · [LeetCode](https://leetcode.com/u/iamcodezero1)
